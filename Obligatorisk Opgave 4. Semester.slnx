@@ -1,3 +1,6 @@
 <Solution>
-  <Project Path="Obligatorisk Opgave 4. Semester/Obligatorisk Opgave 4. Semester.csproj" />
+  <Folder Name="/Obligatorisk-Opgave-4.-Semester/">
+    <Project Path="Obligatorisk-Opgave-4.-Semester/Obligatorisk Opgave 4. Semester/Obligatorisk Opgave 4. Semester.csproj" />
+  </Folder>
+  <Project Path="Obligatorisk Opgave Library/Obligatorisk Opgave Library.csproj" />
 </Solution>

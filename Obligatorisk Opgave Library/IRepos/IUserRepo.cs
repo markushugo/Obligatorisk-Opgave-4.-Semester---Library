@@ -10,9 +10,10 @@ namespace Obligatorisk_Opgave_4._Semester.IRepos
     public interface IUserRepo
     {
         User? GetById(int id);
-        public void GetByUsername(string username);
-        public void GetByEmail(string email);
-        public void UpdateUser(User user);
-        public void CreateUser(User user);
+        User? GetByUsername(string username);
+        User? GetByEmail(string email);
+        void UpdateUser(User user);
+        void CreateUser(User user);
+        void DeleteUser(User user);
     }
 }
