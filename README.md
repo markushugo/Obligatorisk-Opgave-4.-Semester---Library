@@ -19,6 +19,10 @@ docs/
 
 Den ældre løsning inde i webmappen indeholder kun webprojektet. Brug rodløsningen til samlet arbejde.
 
+Webprojektet er markeret som standard-startprojekt i rodløsningen med `DefaultStartup="true"`. Hvis Visual Studio stadig husker biblioteket som startprojekt, højreklik på **Obligatorisk Opgave 4. Semester** (webprojektet med Pages-mappen) i Solution Explorer og vælg **Set as Startup Project / Angiv som startprojekt**. Vælg derefter **http**-profilen og tryk F5. Biblioteket kan ikke startes selvstændigt; det bygges automatisk som afhængighed til webprojektet.
+
+Markeringen understøttes af nyere Visual Studio-versioner. En tidligere gemt lokal startindstilling kan kræve det manuelle valg ovenfor. Ændring af startprojekt retter ikke den uafklarede lokale databaseforbindelse.
+
 ## Forudsætninger og build
 
 - .NET 9 SDK/runtime og en Visual Studio-version, der understøtter løsningen, eller et kompatibelt nyere SDK.
@@ -31,7 +35,7 @@ dotnet restore "Obligatorisk Opgave 4. Semester.slnx"
 dotnet build "Obligatorisk Opgave 4. Semester.slnx" -m:1 -nodeReuse:false
 ```
 
-Baseline-build med de eksisterende restore-data bestod 21. oktober 2026. Databaseskema og SQL-oprettelsesscripts er endnu ikke leveret, og baselineforbindelsen fejler. En ny klon kan derfor ikke forventes at have et fungerende produktkatalog uden lokal databaseopsætning. Se [baseline](docs/baseline.md).
+Baseline-build med de eksisterende restore-data bestod 21. oktober 2026. Den oprindelige TCP-forbindelse fejlede. Der er efterfølgende tilføjet et oprettelsesscript til den lokale SQL Server og en separat database med tre eksempelprodukter. Se [lokal databaseopsætning](docs/lokal-database.md) og den historiske [baseline](docs/baseline.md).
 
 ## Lokal databasekonfiguration
 
@@ -45,7 +49,7 @@ I Visual Studio: højreklik på **webprojektet** → **Manage User Secrets / Adm
 }
 ```
 
-Pladsholderen er ikke en fungerende forbindelse. Brug det faktiske lokale endpoint og kun nødvendige databaserettigheder. Den eksisterende forbindelse på udviklerens maskine er bevaret i lokale User Secrets, men følger ikke med en klon.
+Pladsholderen er ikke en fungerende forbindelse. Den aktuelle lokale opsætning bruger Windows-login til `SecureCodingWebshopLocal` via `lpc:.`. Se [den konkrete forbindelse og oprettelsesscriptet](docs/lokal-database.md). User Secrets følger ikke med en klon, så andre udviklere skal oprette deres egen lokale konfiguration.
 
 User Secrets er til lokal udvikling og er ikke et krypteret produktionslager. I andre miljøer konfigureres forbindelsen eksempelvis gennem miljøvariablen **ConnectionStrings__DefaultConnection**. Undlad at indsætte credentials i dokumentation, commits eller buildlogs.
 

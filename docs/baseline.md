@@ -88,3 +88,9 @@ Brugeren bad derefter eksplicit om at gøre både webprojekt og bibliotek tilgæ
 1.5: baselineundersøgelse gennemført. Build og tre HTTP-svar er verificeret; databaseforbindelse er forsøgt men fortsat blokeret. Opgaven dokumenterer dermed udgangspunkt og blocker, ikke et fuldt fungerende databaseflow.
 
 Commit-forslag: `docs(baseline): record build runtime checks and database blocker`
+
+## Opdatering: lokal databaseforbindelse rettet
+
+Efter baseline bad brugeren om at oprette en ny lokal database. SecureCodingWebshopLocal er nu oprettet på den eksisterende standardinstans via shared memory (lpc:.) med Windows Authentication. Scriptet database/001-create-local-database.sql opretter Product og tre eksempelprodukter og kan genkøres uden dublering eller lagerreset. Projektets User Secrets er opdateret til denne lokale forbindelse uden password. Ingen eksisterende databaser eller SQL Server-netværksindstillinger er ændret.
+
+Begge projekter bygger fortsat med 0 fejl/0 advarsler. Den faktiske webapp blev kørt i Development uden forbindelse-override: GET / returnerede HTTP 200 med alle tre produkter, og GET /Cart returnerede HTTP 200 med tom kurv. Den oprindelige forbindelsesblocker er dermed løst for denne lokale opsætning. Øvrige funktions-/sikkerhedsfund i baseline er fortsat åbne. Se lokal-database.md.
