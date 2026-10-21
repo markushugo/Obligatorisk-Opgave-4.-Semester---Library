@@ -1,0 +1,49 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Products</h1>
+
+<p><a class="btn btn-primary" asp-page="/Cart">Vis kurv</a></p>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+@if (Model.Products != null && Model.Products.Any())
+{
+    <div class="row">
+        @foreach (var p in Model.Products)
+        {
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    @if (!string.IsNullOrEmpty(p.ImageUrl))
+                    {
+                        <img src="@p.ImageUrl" class="card-img-top" alt="@p.Name" />
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@p.Name</h5>
+                        <p class="card-text">@p.Description</p>
+                        <p class="card-text"><strong>Price:</strong> @p.Price.ToString("C")</p>
+                        <p class="card-text"><small class="text-muted">Stock: @p.Stock</small></p>
+
+                        <form method="post" asp-page-handler="AddToCart">
+                            <input type="hidden" name="id" value="@p.Id" />
+                            <div class="input-group mb-2" style="max-width:140px;">
+                                <input class="form-control" type="number" name="quantity" value="1" min="1" max="@p.Stock" />
+                                <button class="btn btn-sm btn-success" type="submit">Tilføj</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>Ingen produkter tilgængelige.</p>
+}

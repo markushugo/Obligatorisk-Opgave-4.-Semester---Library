@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <UserSecretsId>d8434ffe-8e0c-486d-90a5-7d343f944ccd</UserSecretsId>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Obligatorisk_Opgave_4._Semester</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Obligatorisk Opgave Library\Obligatorisk Opgave Library.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -151,3 +151,7 @@ Denne dokumentation er gemt i projektets docs-mappe. Følgende commit-besked kan
 
 Filen docs/kravoversigt.md er tilføjet i projektets mappe. Der er ikke lavet nogen Git-commit. Projektkode og database er uændret.
 
+
+## Opdatering efter del 1
+
+21. oktober 2026: 1.2–1.4 er dokumenteret i acceptkriterier.md, afklaringer.md og trusselsmodel.md. Baseline i baseline.md viser et bestået build og en fortsat blokeret databaseforbindelse. Ingen webshopfunktioner er implementeret i del 1. På brugerens efterfølgende anmodning samles webprojekt og bibliotek i samme repository, og database-login flyttes til lokale User Secrets før publicering. Denne afgrænsede klargøring ændrer ikke de planlagte webshopflows. De tidligere statusafsnit ovenfor beskriver tilstanden ved levering af 1.1.

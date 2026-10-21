@@ -1,0 +1,48 @@
+@page
+@model CartModel
+@{
+    ViewData["Title"] = "Din kurv";
+}
+
+<h1>Din kurv</h1>
+
+@if (Model.Cart.Items != null && Model.Cart.Items.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produkt</th>
+                <th>Pris</th>
+                <th>Antal</th>
+                <th>Linjetotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Cart.Items)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.LineTotal.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-end"><strong>Total</strong></td>
+                <td><strong>@Model.Cart.Total.ToString("C")</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <form method="post" asp-page-handler="Clear">
+        <button class="btn btn-danger">Ryd kurv</button>
+        <a class="btn btn-secondary" asp-page="/Index">Fortsæt shopping</a>
+    </form>
+}
+else
+{
+    <p>Din kurv er tom.</p>
+    <a class="btn btn-primary" asp-page="/Index">Se produkter</a>
+}
